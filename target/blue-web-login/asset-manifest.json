@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/blue-web-login/static/css/main.abd64e84.css",
+    "main.js": "/blue-web-login/static/js/main.9a8ea454.js",
+    "index.html": "/blue-web-login/index.html",
+    "main.abd64e84.css.map": "/blue-web-login/static/css/main.abd64e84.css.map",
+    "main.9a8ea454.js.map": "/blue-web-login/static/js/main.9a8ea454.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.abd64e84.css",
+    "static/js/main.9a8ea454.js"
+  ]
+}

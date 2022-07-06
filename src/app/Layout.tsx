@@ -1,13 +1,13 @@
 import React, { useContext } from 'react'
-import Label from './Label';
-import Pw from './Pw';
-import UserId from './UserId';
+import Label from './Label'
+import Pw from './Pw'
+import UserId from './UserId'
 import AppContext, { AppContextI } from '../sys/AppContext'
 
 const Layout = () => {
 
   const { userid, pw, login } = useContext(AppContext) as AppContextI
-
+  
   return (
     <>
       <header>
@@ -15,7 +15,7 @@ const Layout = () => {
       </header>
       <form onSubmit={(e) => e.preventDefault()}>
         <div>
-            <Label text='User id' />
+            <Label text='User ID' />
             <UserId />
         </div>
         <div>
@@ -28,7 +28,6 @@ const Layout = () => {
         <p>{userid}</p>
         <p>{pw}</p>
       </div>
-    
     </>
   )
 }
