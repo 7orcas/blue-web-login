@@ -11,6 +11,7 @@
 # production
 /build
 /deployments
+/target
 
 # misc
 .DS_Store

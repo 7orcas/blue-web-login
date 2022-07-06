@@ -21,6 +21,7 @@ export const AppContextProvider: FC<Props> = ({ children }) => {
 
     const [userid, setUserid] = useState ('')
     const [pw, setPw] = useState ('')
+
     const login = async () => {
       console.log('loggin in with ' + userid + ' / ' + pw)
       setPw('')
@@ -28,6 +29,11 @@ export const AppContextProvider: FC<Props> = ({ children }) => {
       try {
         const response = await api.post('/login', attempt);
         console.log(response)
+
+        //jump to application
+        //window.location.href = 'http://localhost:8080/blue-web/'
+        window.location.href = response.data
+
       } catch (err : any) {
           console.log(`Error: ${err.message}`);
       }
