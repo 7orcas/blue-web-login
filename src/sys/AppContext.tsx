@@ -21,18 +21,17 @@ export const AppContextProvider: FC<Props> = ({ children }) => {
 
     const [userid, setUserid] = useState ('')
     const [pw, setPw] = useState ('')
-
+    
     const login = async () => {
       console.log('loggin in with ' + userid + ' / ' + pw)
       setPw('')
       const attempt = { u: userid, p : pw };
       try {
-        const response = await api.post('/login', attempt);
+        const response = await api.post('/login/web', attempt);
         console.log(response)
+        console.log(response.data.WebClientMainUrl + '?init=' + response.data.WebLoginInitUrl + '&sid=' + response.data.SessionID)
 
-        //jump to application
-        //window.location.href = 'http://localhost:8080/blue-web/'
-        window.location.href = response.data
+        window.location.href = response.data.WebClientMainUrl + '?init=' + response.data.WebLoginInitUrl + '&sid=' + response.data.SessionID
 
       } catch (err : any) {
           console.log(`Error: ${err.message}`);
