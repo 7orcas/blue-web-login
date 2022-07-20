@@ -1,12 +1,12 @@
 import React, { useContext } from 'react'
+import AppContext, { AppContextI } from '../sys/AppContext'
 import Label from './Label'
 import Pw from './Pw'
 import UserId from './UserId'
-import AppContext, { AppContextI } from '../sys/AppContext'
 
 const Layout = () => {
 
-  const { userid, pw, login } = useContext(AppContext) as AppContextI
+  const { userid, pw, login, ping } = useContext(AppContext) as AppContextI
   
   return (
     <>
@@ -15,11 +15,11 @@ const Layout = () => {
       </header>
       <form onSubmit={(e) => e.preventDefault()}>
         <div>
-            <Label text='User ID' />
+            <Label langkey='userid' />
             <UserId />
         </div>
         <div>
-            <Label text='Password' />
+            <Label langkey='pw' />
             <Pw />
         </div>
         <button type="submit" onClick={() => login()}>Login</button>
@@ -27,6 +27,7 @@ const Layout = () => {
       <div>
         <p>{userid}</p>
         <p>{pw}</p>
+        <button type="submit" onClick={() => ping()}>Ping</button>
       </div>
     </>
   )
