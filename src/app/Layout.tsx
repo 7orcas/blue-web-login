@@ -3,11 +3,21 @@ import AppContext, { AppContextI } from '../sys/AppContext'
 import Label from './Label'
 import Pw from './Pw'
 import UserId from './UserId'
+import getLang from '../sys/util/getLang'
+import login from '../sys/util/login'
+import ping from '../sys/util/ping'
+
 
 const Layout = () => {
 
-  const { userid, pw, login, ping } = useContext(AppContext) as AppContextI
+  const { user, userid, pw, setPw } = useContext(AppContext) as AppContextI
   
+  const loginX = () => {
+    setPw('')
+    const attempt = { u: user.userid, p : user.pw };
+    login (attempt)
+  }
+
   return (
     <>
       <header>
@@ -22,7 +32,7 @@ const Layout = () => {
             <Label langkey='pw' />
             <Pw />
         </div>
-        <button type="submit" onClick={() => login()}>Login</button>
+        <button type="submit" onClick={() => loginX()}>{getLang('login')}</button>
       </form>
       <div>
         <p>{userid}</p>

@@ -1,16 +1,24 @@
 import React, { useContext } from 'react'
 import AppContext, { AppContextI } from '../sys/AppContext'
+import User from '../sys/util/user'
 
 const Pw = () => {
   
-  const { pw, setPw } = useContext(AppContext) as AppContextI
+  const { user, setUser } = useContext(AppContext) as AppContextI
+
+  const setPwX = (txt : string) => {
+    let x = new User(user)
+    x.pw = txt
+    setUser(x)
+  }
+
 
   return (
     <>
       <input onSubmit={(e) => e.preventDefault()}
         type='text'
-        value={pw}
-        onChange={(e) => setPw(e.target.value)}
+        value={user.pw}
+        onChange={(e) => setPwX(e.target.value)}
       />
     </>
   )
