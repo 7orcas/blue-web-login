@@ -1,4 +1,4 @@
-import { LangInfoI } from '../Interfaces'
+import { LangI } from '../Interfaces'
 import api from '../api'
 
 const loadLang = async () => {
@@ -9,9 +9,9 @@ const loadLang = async () => {
 
         const response = await api.get(`/lang/login-pack?${params}`, {withCredentials: true})
         
-        let labels : Array<LangInfoI> = []
+        let labels : Array<LangI> = []
         for (const l of response.data) {
-            labels.push ({key : l._code, label : l.label})
+            labels.push ({key : l._c, label : l.l})
         }
         return labels
 
