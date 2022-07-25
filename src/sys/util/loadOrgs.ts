@@ -1,7 +1,7 @@
 import { OrgI } from '../Interfaces'
 import api from '../api'
 
-const loadOrg = async () => {
+const loadOrgs = async () => {
 
     try {
         const response = await api.get(`/org/org-list`, {withCredentials: true})
@@ -20,4 +20,4 @@ const loadOrg = async () => {
     }
 }
 
-export default loadOrg
+export default loadOrgs

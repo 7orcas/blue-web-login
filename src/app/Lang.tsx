@@ -1,28 +1,28 @@
 import { useContext } from 'react'
 import Select from 'react-select';
 import AppContext, { AppContextI } from '../sys/AppContext'
-import { OrgI } from '../sys/Interfaces'
+import { LangI } from '../sys/Interfaces'
 import User from '../sys/util/user'
 import getLabel from '../sys/util/getLabel'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Label from './Label';
 
-const Org = () => {
+const Lang = () => {
   
-  const { user, setUser, orgs } = useContext(AppContext) as AppContextI
+  const { user, setUser, langs } = useContext(AppContext) as AppContextI
 
-  const setOrgX = (txt : any) => {
+  const setLangX = (txt : any) => {
     let x = new User(user)
-    x.setOrgNumber(txt.value)
+    x.lang = txt.value
     setUser(x)
   }
 
   //The value prop is handled really bad, and it needs a hack
   //Refer https://stackoverflow.com/questions/43250854/react-select-does-not-show-the-selected-value-in-the-field
   const getValue = () => {
-    for (var i=0;i<orgs.length;i++){
-      if (orgs[i].value === user.org){
-        return {label: orgs[i].label}
+    for (var i=0;i<langs.length;i++){
+      if (langs[i].value === user.lang){
+        return {label: langs[i].value}
       }
     }
     return {}
@@ -35,10 +35,10 @@ const Org = () => {
           <div className="col-md-4"></div>
             <div className="col-md-4">
               <Select 
-                options={ orgs } 
+                options={ langs } 
                 value={ getValue() }
-                onChange={ setOrgX }
-                placeholder={ getLabel('org') }
+                onChange={ setLangX }
+                placeholder={ getLabel('lang') }
               />
             </div>
           <div className="col-md-4"></div>
@@ -48,4 +48,4 @@ const Org = () => {
   )
 }
 
-export default Org
+export default Lang

@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import getLang from '../sys/util/getLang'
+import getLabel from '../sys/util/getLabel'
 
 interface Props {
     langkey: string
@@ -8,7 +8,7 @@ interface Props {
 const Label: FC<Props> = ({ langkey }) => {
   return (
     <>
-      {getLang(langkey)}
+      {getLabel(langkey)}
     </>
   )
 }

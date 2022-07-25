@@ -1,7 +1,8 @@
 import { FC, createContext, useState, useEffect } from 'react'
-import { LangI, OrgI } from './Interfaces'
-import loadLang from './util/loadLang'
-import loadOrg from './util/loadOrg'
+import { LangI, LabelI, OrgI } from './Interfaces'
+import loadLangs from './util/loadLangs'
+import loadLabels from './util/loadLabels'
+import loadOrgs from './util/loadOrgs'
 import User from './util/user'
 
 /**
@@ -17,18 +18,20 @@ interface Props {
 export interface AppContextI {
   user: any
   setUser: any
-  langRepo : LangI[]
-  orgRepo : OrgI[]
+  langs : LangI[]
+  labels : LabelI[]
+  orgs : OrgI[]
 }
 
 const AppContext = createContext<AppContextI | null>(null)
 
 export const AppContextProvider: FC<Props> = ({ children }) => {
 
+  const [load, setLoad] = useState <boolean>(false) //Control initial load
   const [user, setUser] = useState (new User(null))
-  const [lang, setLang] = useState <LangI[]>([])
-  const [org, setOrg] = useState <OrgI[]>([])
-  const [load, setLoad] = useState <boolean>(false)
+  const [langs, setLangs] = useState <LangI[]>([])
+  const [labels, setLabels] = useState <LabelI[]>([])
+  const [orgs, setOrgs] = useState <OrgI[]>([])
       
   // Load language and orgs data, setup parameters at page load
   useEffect(() => {
@@ -39,18 +42,41 @@ export const AppContextProvider: FC<Props> = ({ children }) => {
     let login = new User(user)
     login.userid = url.searchParams.get("u")
     login.pw = url.searchParams.get("p")
+    // login.lang = url.searchParams.get("l")
     
-    //Load langauge package
-    const load1 = async () => {
-      let labels = await loadLang() || []
-      setLang (labels)
+    //Load langauges 
+    const loadLangsX = async () => {
+      let langs = await loadLangs() || []
+      setLangs (langs)
+      
+      //First set default
+      langs.forEach((l) => {
+        if (l.dvalue === true){
+          login.lang = l.value
+        }
+      })
+      
+      //Now test if passed in lang is valid
+      langs.forEach((l) => {
+        if ('' + l.label === url.searchParams.get("l")){
+          login.lang = l.value
+        }
+      })
+      
+      setUser(login)
     }
-    load1()
+    loadLangsX()
+
+    //Load label package
+    const loadLabelsX = async () => {
+      setLabels (await loadLabels() || [])
+    }
+    loadLabelsX()
 
     //Load organisations
-    const load2 = async () => {
-      let orgs = await loadOrg() || []
-      setOrg (orgs)
+    const loadOrgX = async () => {
+      let orgs = await loadOrgs() || []
+      setOrgs (orgs)
 
       //First set default
       orgs.forEach((o) => {
@@ -68,14 +94,15 @@ export const AppContextProvider: FC<Props> = ({ children }) => {
 
       setUser(login)
     }
-    load2()
+    loadOrgX()
   })
   
   const appValue: AppContextI = {
     user: user,
     setUser: setUser,
-    langRepo: lang,
-    orgRepo: org
+    langs: langs,
+    labels: labels,
+    orgs: orgs
   }
 
   return (

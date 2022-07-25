@@ -2,10 +2,11 @@ import React, { useContext } from 'react'
 import AppContext, { AppContextI } from '../sys/AppContext'
 import Label from './Label'
 import Pw from './Pw'
+import Lang from './Lang'
 import Org from './Org'
 import User from '../sys/util/user'
 import UserId from './UserId'
-import getLang from '../sys/util/getLang'
+import getLabel from '../sys/util/getLabel'
 import login from '../sys/util/login'
 import ping from '../sys/util/ping'
 
@@ -21,7 +22,7 @@ const Layout = () => {
     let x = new User(user)
     x.pw = ''
     setUser(x)
-    const attempt = { u: user.userid, p : user.pw };
+    const attempt = { u: user.userid, p : user.pw, o : user.org, l : user.lang };
     login (attempt)
   }
 
@@ -40,13 +41,17 @@ const Layout = () => {
             <Pw />
         </div>
         <div>
+            <Label langkey='lang' />
+            <Lang />
+        </div>
+        <div>
             <Label langkey='org' />
             <Org />
         </div>
         <button 
           disabled={!user.isValid()}
           type="submit" 
-          onClick={() => loginX()}>{getLang('login')}
+          onClick={() => loginX()}>{getLabel('login')}
         </button>
 
       </form>
@@ -54,6 +59,7 @@ const Layout = () => {
         <p>User: {user.userid}</p>
         <p>PW: {user.pw}</p>
         <p>Org: {user.org}</p>
+        <p>Lang: {user.lang}</p>
         <button type="submit" onClick={() => ping()}>Ping</button>
       </div>
     </>
