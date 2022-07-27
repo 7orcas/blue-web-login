@@ -52,14 +52,14 @@ export const AppContextProvider: FC<Props> = ({ children }) => {
       //First set default
       langs.forEach((l) => {
         if (l.dvalue === true){
-          login.lang = l.value
+          login.lang = l.label
         }
       })
       
       //Now test if passed in lang is valid
       langs.forEach((l) => {
         if ('' + l.label === url.searchParams.get("l")){
-          login.lang = l.value
+          login.lang = l.label
         }
       })
       
