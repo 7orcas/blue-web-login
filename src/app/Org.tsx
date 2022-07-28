@@ -3,7 +3,7 @@ import Select from 'react-select';
 import AppContext, { AppContextI } from '../sys/AppContext'
 import { OrgI } from '../sys/Interfaces'
 import User from '../sys/util/user'
-import getLabel from '../sys/util/getLabel'
+import useLabel from '../sys/util/useLabel'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Label from './Label';
 
@@ -38,7 +38,7 @@ const Org = () => {
                 options={ orgs } 
                 value={ getValue() }
                 onChange={ setOrgX }
-                placeholder={ getLabel('org') }
+                placeholder={ useLabel('org') }
               />
             </div>
           <div className="col-md-4"></div>

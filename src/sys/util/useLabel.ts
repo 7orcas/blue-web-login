@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import AppContext, { AppContextI } from '../AppContext'
 
-const getLabel = (key : string) => {
+const useLabel = (key : string) => {
 
   const { labels } = useContext(AppContext) as AppContextI
 
@@ -13,4 +13,4 @@ const getLabel = (key : string) => {
   return key + '?'
 }
 
-export default getLabel
+export default useLabel

@@ -1,15 +1,37 @@
 import { LangI } from '../Interfaces'
 import api from '../api'
+import User from './user'
 
-const loadLangs = async () => {
+const loadLangs = async (user : User, url : URL, setErr : any) => {
 
   try {
-    const response = await api.get(`/lang/login-lang`, {withCredentials: true})
-    
-    let langs : Array<LangI> = []
-    for (const l of response.data) {
-      langs.push ({label : l._c, value : l.l, dvalue : l.d})
+    const response = await api.get(`/lang/languages`, {withCredentials: true})
+    const rtn = response.data
+
+    if (!rtn.valid){
+      setErr(rtn.message)
+      return
     }
+
+    let langs : Array<LangI> = []
+    for (const l of rtn.data) {
+      langs.push ({label : l.c, value : l.d, dvalue : l.x})
+    }
+
+    //First set default
+    langs.forEach((l) => {
+      if (l.dvalue === true){
+        user.lang = l.label
+      }
+    })
+
+    //Now test if passed in lang is valid
+    langs.forEach((l) => {
+      if ('' + l.label === url.searchParams.get("l")){
+        user.lang = l.label
+      }
+    })
+
     return langs
 
   } catch (err : any) {

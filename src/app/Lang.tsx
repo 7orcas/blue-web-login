@@ -3,7 +3,7 @@ import Select from 'react-select';
 import AppContext, { AppContextI } from '../sys/AppContext'
 import { LangI } from '../sys/Interfaces'
 import User from '../sys/util/user'
-import getLabel from '../sys/util/getLabel'
+import useLabel from '../sys/util/useLabel'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Lang = () => {
@@ -52,7 +52,7 @@ const Lang = () => {
                 options={ getOptions() } 
                 value={ getValue() }
                 onChange={ setLangX }
-                placeholder={ getLabel('lang') }
+                placeholder={ useLabel('lang') }
               />
             </div>
           <div className="col-md-4"></div>

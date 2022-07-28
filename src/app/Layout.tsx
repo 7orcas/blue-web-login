@@ -4,15 +4,16 @@ import Label from './Label'
 import Pw from './Pw'
 import Lang from './Lang'
 import Org from './Org'
+import Error from './Error'
 import User from '../sys/util/user'
 import UserId from './UserId'
-import getLabel from '../sys/util/getLabel'
+import useLabel from '../sys/util/useLabel'
 import login from '../sys/util/login'
 import ping from '../sys/util/ping'
 
 const Layout = () => {
 
-  const { user, setUser } = useContext(AppContext) as AppContextI
+  const { user, setUser, err } = useContext(AppContext) as AppContextI
   
   const loginX = () => {
     if (!user.isValid()){
@@ -29,7 +30,7 @@ const Layout = () => {
   return (
     <>
       <header>
-        <h1>Blue</h1>
+        <h1>{useLabel('loginT')}</h1>
       </header>
       <form onSubmit={(e) => e.preventDefault()}>
         <div>
@@ -51,16 +52,12 @@ const Layout = () => {
         <button 
           disabled={!user.isValid()}
           type="submit" 
-          onClick={() => loginX()}>{getLabel('login')}
+          onClick={() => loginX()}>{useLabel('login')}
         </button>
 
       </form>
       <div>
-        <p>User: {user.userid}</p>
-        <p>PW: {user.pw}</p>
-        <p>Org: {user.org}</p>
-        <p>Lang: {user.lang}</p>
-        <button type="submit" onClick={() => ping()}>Ping</button>
+        <Error message={err} />
       </div>
     </>
   )

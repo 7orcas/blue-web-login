@@ -2,15 +2,15 @@ import { FC } from 'react'
 import useLabel from '../sys/util/useLabel'
 
 interface Props {
-    langkey: string
+    message: string
 }
 
-const Label: FC<Props> = ({ langkey }) => {
+const Error: FC<Props> = ({ message }) => {
   return (
     <>
-      {useLabel(langkey)}
+      { message }
     </>
   )
 }
 
-export default Label
+export default Error
