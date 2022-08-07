@@ -8,7 +8,7 @@ interface Props {
 const Error: FC<Props> = ({ message }) => {
   return (
     <>
-      { message }
+      { message.length > 0 ? useLabel(message) : ''}
     </>
   )
 }

@@ -1,17 +1,24 @@
 import api from '../api'
 
-const login = async (attempt : any) => {
+const login = async (attempt : any, setErr : any) => {
 
   try {
-    const response = await api.post('/login/web', attempt);
+    const response = await api.post('/login/web', attempt)
     
-    window.location.href = response.data.m + 
-      '?base=' + response.data.b + 
-      '&init=' + response.data.i + 
-      '&sid=' + response.data.s
+    if (response.data.message) {
+      setErr(response.data.message)
+      return
+    }
+
+    let data = response.data.data
+    window.location.href = data.m + 
+      '?base=' + data.b + 
+      '&init=' + data.i + 
+      '&sid=' + data.s
 
   } catch (err : any) {
-    console.log(`Error: ${err.message}`);
+    setErr(err)
+    console.log(`Error: ${err.message}`)
   }
 }
 

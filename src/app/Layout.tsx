@@ -13,7 +13,7 @@ import ping from '../sys/util/ping'
 
 const Layout = () => {
 
-  const { user, setUser, err } = useContext(AppContext) as AppContextI
+  const { user, setUser, err, setErr } = useContext(AppContext) as AppContextI
   
   const loginX = () => {
     if (!user.isValid()){
@@ -24,7 +24,7 @@ const Layout = () => {
     x.pw = ''
     setUser(x)
     const attempt = { u: user.userid, p : user.pw, o : user.org, l : user.lang };
-    login (attempt)
+    login (attempt, setErr)
   }
 
   return (
