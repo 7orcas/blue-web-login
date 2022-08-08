@@ -7,9 +7,9 @@ interface Props {
 
 const Label: FC<Props> = ({ langkey }) => {
   return (
-    <>
+    <span className='label'>
       {useLabel(langkey)}
-    </>
+    </span>
   )
 }
 

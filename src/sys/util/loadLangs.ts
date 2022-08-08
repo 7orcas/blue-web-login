@@ -15,20 +15,20 @@ const loadLangs = async (user : User, url : URL, setErr : any) => {
 
     let langs : Array<LangI> = []
     for (const l of rtn.data) {
-      langs.push ({label : l.c, value : l.d, dvalue : l.x})
+      langs.push ({code : l.c, descr : l.d, dvalue : l.x})
     }
 
     //First set default
     langs.forEach((l) => {
       if (l.dvalue === true){
-        user.lang = l.label
+        user.lang = l.code
       }
     })
 
     //Now test if passed in lang is valid
     langs.forEach((l) => {
-      if ('' + l.label === url.searchParams.get("l")){
-        user.lang = l.label
+      if ('' + l.code === url.searchParams.get("l")){
+        user.lang = l.code
       }
     })
 

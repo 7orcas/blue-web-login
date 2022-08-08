@@ -1,15 +1,15 @@
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import AppContext, { AppContextI } from '../sys/AppContext'
 import Label from './Label'
 import Pw from './Pw'
-import Lang from './Lang'
+import Languages from './Languages'
 import Org from './Org'
 import Error from './Error'
 import User from '../sys/util/user'
 import UserId from './UserId'
 import useLabel from '../sys/util/useLabel'
 import login from '../sys/util/login'
-import ping from '../sys/util/ping'
+import Button from 'react-bootstrap/Button';
 
 const Layout = () => {
 
@@ -29,36 +29,38 @@ const Layout = () => {
 
   return (
     <>
-      <header>
-        <h1>{useLabel('loginT')}</h1>
-      </header>
-      <form onSubmit={(e) => e.preventDefault()}>
-        <div>
+      <section className='title'>
+        {useLabel('loginT')}
+        <Languages />
+      </section>
+      <section>
+        <form onSubmit={(e) => e.preventDefault()}>
+          <div className='label-field'>
             <Label langkey='userid' />
             <UserId />
-        </div>
-        <div>
+          </div>
+          <div className='label-field'>
             <Label langkey='pw' />
             <Pw />
-        </div>
-        <div>
-            <Label langkey='lang' />
-            <Lang />
-        </div>
-        <div>
+          </div>
+          <div className='label-field'>
             <Label langkey='org' />
             <Org />
-        </div>
-        <button 
-          disabled={!user.isValid()}
-          type="submit" 
-          onClick={() => loginX()}>{useLabel('login')}
-        </button>
+          </div>
+          <Button variant="primary"
+            className='login-button mb-2'
+            disabled={!user.isValid()}
+            type="submit" 
+            onClick={() => loginX()}>{useLabel('login')}
+          </Button>
 
-      </form>
-      <div>
-        <Error message={err} />
-      </div>
+        </form>
+      </section>
+      <section>
+        <div className='error-message'>
+          <Error message={err} />
+        </div>
+      </section>
     </>
   )
 }

@@ -14,7 +14,9 @@ const UserId = () => {
 
   return (
     <>
-      <input onSubmit={(e) => e.preventDefault()}
+      <input 
+        className='field'
+        onSubmit={(e) => e.preventDefault()}
         type='text'
         value={user.userid}
         onChange={(e) => setUserX(e.target.value)}

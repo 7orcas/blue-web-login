@@ -15,7 +15,9 @@ const Pw = () => {
 
   return (
     <>
-      <input onSubmit={(e) => e.preventDefault()}
+      <input 
+        className='field'
+        onSubmit={(e) => e.preventDefault()}
         type='password'
         value={user.pw}
         onChange={(e) => setPwX(e.target.value)}

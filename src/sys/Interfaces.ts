@@ -1,7 +1,7 @@
 
 export interface LangI {
-  label: string; //lang code
-  value: string; //lang description
+  code: string; 
+  descr: string; //description
   dvalue: boolean; //default 
 }
 

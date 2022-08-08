@@ -1,64 +1,44 @@
-import { useContext } from 'react'
-import Select from 'react-select';
+import { useContext, FC } from 'react'
 import AppContext, { AppContextI } from '../sys/AppContext'
 import { LangI } from '../sys/Interfaces'
 import User from '../sys/util/user'
-import useLabel from '../sys/util/useLabel'
-import 'bootstrap/dist/css/bootstrap.min.css';
 
-const Lang = () => {
+interface Props {
+  language: LangI
+}
+
+const Lang : FC<Props> = ({ language }) => {
   
   const { user, setUser, langs } = useContext(AppContext) as AppContextI
 
+  const getFlag = (l : LangI) : string => {
+    if (l === null) return 'united_kingdom_flag.png'
+    if (l.code === 'en') return 'united_kingdom_flag.png'
+    if (l.code === 'de') return 'germany_flag.png'
+    return 'italy_flag.png'
+  }
+
+  const getDescr = (l : LangI) : string => {
+    if (l === null) return ''
+    return l.descr
+  }
+
   //Assign selected lang to user object
-  const setLangX = (select : any) => {
+  const setLangX = (code : any) => {
     for (var i=0;i<langs.length;i++){
-      if (langs[i].value === select.value){
+      if (langs[i].code === code){
         let x = new User(user)
-        x.lang = langs[i].label
+        x.lang = langs[i].code
         setUser(x)
         return
       }
     }
   }
 
-  //The value prop is handled really bad, and it needs a hack
-  //Refer https://stackoverflow.com/questions/43250854/react-select-does-not-show-the-selected-value-in-the-field
-  const getValue = () => {
-    for (var i=0;i<langs.length;i++){
-      if (langs[i].label === user.lang){
-        return {label: langs[i].value}
-      }
-    }
-    return {}
-  }
-
-  //Configure options list to only show language values, ie full name
-  const getOptions = () => {
-    let langsX = []
-    for (var i=0;i<langs.length;i++){
-      langsX.push ({label : langs[i].value, value : langs[i].value})
-    }
-    return langsX
-  }
-
   return (
-    <>
-      <div className="container">
-        <div className="row">
-          <div className="col-md-4"></div>
-            <div className="col-md-4">
-              <Select 
-                options={ getOptions() } 
-                value={ getValue() }
-                onChange={ setLangX }
-                placeholder={ useLabel('lang') }
-              />
-            </div>
-          <div className="col-md-4"></div>
-        </div>
-      </div>
-    </>
+    <span className='flag'>
+      <img src={require('./img/' + getFlag(language))} alt={getDescr(language)} onClick={() => setLangX(language.code)}/>
+    </span>
   )
 }
 

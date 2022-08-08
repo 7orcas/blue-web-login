@@ -4,8 +4,6 @@ import AppContext, { AppContextI } from '../sys/AppContext'
 import { OrgI } from '../sys/Interfaces'
 import User from '../sys/util/user'
 import useLabel from '../sys/util/useLabel'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Label from './Label';
 
 const Org = () => {
   
@@ -28,22 +26,29 @@ const Org = () => {
     return {}
   }
 
+  const customStyles = {
+    control: (provided : any, state : any) => ({
+      ...provided,
+      borderColor: 'rgb(118,118,118)',
+      minWidth: '200px',
+      maxWidth: '200px',
+      minHeight: '40px',
+      maxHeight: '40px',
+      textAlign: 'left'
+    }),
+  };
+
   return (
     <>
-      <div className="container">
-        <div className="row">
-          <div className="col-md-4"></div>
-            <div className="col-md-4">
-              <Select 
-                options={ orgs } 
-                value={ getValue() }
-                onChange={ setOrgX }
-                placeholder={ useLabel('org') }
-              />
-            </div>
-          <div className="col-md-4"></div>
-        </div>
-      </div>
+      <Select 
+        className="react-select--inline"
+        classNamePrefix="react-select"
+        styles={ customStyles }
+        options={ orgs } 
+        value={ getValue() }
+        onChange={ setOrgX }
+        placeholder={ useLabel('org') }
+      />
     </>
   )
 }
