@@ -4,6 +4,7 @@ class UrlSearchParams {
   lang : string = ''
   org : number = 0
   showOrg : boolean = false
+  auto : boolean = false
   test : boolean = false
   
   constructor() {
@@ -13,6 +14,7 @@ class UrlSearchParams {
     this.lang = this.getParamString(url.searchParams.get("l"))
     this.org = this.getParamInteger(url.searchParams.get("o"))
     this.showOrg = this.getParamBoolean(url.searchParams.get("org"))
+    this.auto = this.getParamBoolean(url.searchParams.get("auto"))
     this.test = this.getParamBoolean(url.searchParams.get("test"))
   }
 

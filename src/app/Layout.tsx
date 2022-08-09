@@ -13,7 +13,7 @@ import Button from 'react-bootstrap/Button';
 
 const Layout = () => {
 
-  const { user, setUser, err, setErr, showOrg, showLang, isTest } = useContext(AppContext) as AppContextI
+  const { user, setUser, err, setErr, showOrg, showLang, isAuto, isTest } = useContext(AppContext) as AppContextI
   
   const loginX = () => {
     if (!user.isValid()){
@@ -31,6 +31,10 @@ const Layout = () => {
     }
     
     login (attempt, setErr)
+  }
+
+  if (isAuto) {
+    loginX()
   }
 
   return (

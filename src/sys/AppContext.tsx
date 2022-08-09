@@ -26,6 +26,7 @@ export interface AppContextI {
   labels : LabelI[]
   showOrg : any
   orgs : OrgI[]
+  isAuto : any
   isTest : any
 }
 
@@ -40,6 +41,7 @@ export const AppContextProvider: FC<Props> = ({ children }) => {
   const [showOrg, setShowOrg] = useState (false)
   const [orgs, setOrgs] = useState <OrgI[]>([])
   const [err, setErr] = useState ('')
+  const [isAuto, setIsAuto] = useState (false)
   const [isTest, setIsTest] = useState (false)
       
   // Run Once: Load languages and orgs data
@@ -50,6 +52,7 @@ export const AppContextProvider: FC<Props> = ({ children }) => {
     login.userid = params.userid
     login.pw = params.pw
     setShowOrg(params.showOrg)
+    setIsAuto(params.auto)
     setIsTest(params.test)
         
     //Load langauges 
@@ -89,6 +92,7 @@ export const AppContextProvider: FC<Props> = ({ children }) => {
     labels: labels,
     showOrg: showOrg,
     orgs: orgs,
+    isAuto: isAuto,
     isTest: isTest
   }
 
