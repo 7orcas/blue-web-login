@@ -4,6 +4,7 @@ import loadLangs from './util/loadLangs'
 import loadLabels from './util/loadLabels'
 import loadOrgs from './util/loadOrgs'
 import User from './util/user'
+import UrlSearchParams from './util/urlSearchParams'
 
 /**
  * TODO Module comment
@@ -20,9 +21,12 @@ export interface AppContextI {
   setUser: any
   err: any
   setErr: any
+  showLang: any
   langs : LangI[]
   labels : LabelI[]
+  showOrg : any
   orgs : OrgI[]
+  isTest : any
 }
 
 const AppContext = createContext<AppContextI | null>(null)
@@ -30,30 +34,36 @@ const AppContext = createContext<AppContextI | null>(null)
 export const AppContextProvider: FC<Props> = ({ children }) => {
 
   const [user, setUser] = useState (new User(null))
+  const [showLang, setShowLang] = useState (false)
   const [langs, setLangs] = useState <LangI[]>([])
   const [labels, setLabels] = useState <LabelI[]>([])
+  const [showOrg, setShowOrg] = useState (false)
   const [orgs, setOrgs] = useState <OrgI[]>([])
   const [err, setErr] = useState ('')
+  const [isTest, setIsTest] = useState (false)
       
   // Run Once: Load languages and orgs data
   useEffect(() => {
 
-    const url = new URL (window.location.href)
+    const params = new UrlSearchParams()
     let login = new User(user)
-    login.userid = url.searchParams.get("u")
-    login.pw = url.searchParams.get("p")
+    login.userid = params.userid
+    login.pw = params.pw
+    setShowOrg(params.showOrg)
+    setIsTest(params.test)
         
     //Load langauges 
     const loadLangsX = async () => {
-      let langs = await loadLangs(login, url, setErr) || []
+      let langs = await loadLangs(login, params, setErr) || []
       setLangs (langs)
+      setShowLang(langs.length > 1)
       setUser(login)
     }
     loadLangsX()
 
     //Load organisations
     const loadOrgX = async () => {
-      let orgs = await loadOrgs(login, url) || []
+      let orgs = await loadOrgs(login, params) || []
       setOrgs (orgs)
       setUser(login)
     }
@@ -74,9 +84,12 @@ export const AppContextProvider: FC<Props> = ({ children }) => {
     setUser: setUser,
     err: err,
     setErr: setErr,
+    showLang: showLang,
     langs: langs,
     labels: labels,
-    orgs: orgs
+    showOrg: showOrg,
+    orgs: orgs,
+    isTest: isTest
   }
 
   return (

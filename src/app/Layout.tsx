@@ -13,7 +13,7 @@ import Button from 'react-bootstrap/Button';
 
 const Layout = () => {
 
-  const { user, setUser, err, setErr } = useContext(AppContext) as AppContextI
+  const { user, setUser, err, setErr, showOrg, showLang, isTest } = useContext(AppContext) as AppContextI
   
   const loginX = () => {
     if (!user.isValid()){
@@ -24,6 +24,12 @@ const Layout = () => {
     x.pw = ''
     setUser(x)
     const attempt = { u: user.userid, p : user.pw, o : user.org, l : user.lang };
+    
+    if (isTest) {
+      setErr(JSON.stringify(attempt))
+      return;
+    }
+    
     login (attempt, setErr)
   }
 
@@ -31,7 +37,7 @@ const Layout = () => {
     <>
       <section className='title'>
         {useLabel('loginT')}
-        <Languages />
+        {showLang? <Languages /> : ''}
       </section>
       <section>
         <form onSubmit={(e) => e.preventDefault()}>
@@ -43,13 +49,13 @@ const Layout = () => {
             <Label langkey='pw' />
             <Pw />
           </div>
-          <div className='label-field'>
+          { showOrg? <div className='label-field'>
             <Label langkey='org' />
             <Org />
-          </div>
+          </div> : ''}
           <Button variant="primary"
             className='login-button mb-2'
-            disabled={!user.isValid()}
+            disabled={!user.isValid(showOrg, showLang)}
             type="submit" 
             onClick={() => loginX()}>{useLabel('login')}
           </Button>

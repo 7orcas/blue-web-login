@@ -1,8 +1,9 @@
 import { OrgI } from '../Interfaces'
 import api from '../api'
 import User from './user'
+import UrlSearchParams from './urlSearchParams'
 
-const loadOrgs = async (user : User, url : URL) => {
+const loadOrgs = async (user : User, params : UrlSearchParams) => {
 
   try {
     const response = await api.get(`/org/org-list`, {withCredentials: true})
@@ -12,20 +13,24 @@ const loadOrgs = async (user : User, url : URL) => {
         orgs.push ({label : l.c, value : l.o, dvalue : l.x})
     }
 
-    //First set default
+    //Only select default if orgs are shown
+    if (params.showOrg) {
+
+      //First set default
+      orgs.forEach((o) => {
+        if (o.dvalue === true){
+          user.setOrgNumber(o.value)
+        }
+      })
+    }
+
+    //Test if passed in org is valid
     orgs.forEach((o) => {
-      if (o.dvalue === true){
+      if (o.value === params.org){
         user.setOrgNumber(o.value)
       }
     })
-
-    //Now test if passed in org is valid
-    orgs.forEach((o) => {
-      if ('' + o.value === url.searchParams.get("o")){
-        user.setOrgNumber(o.value)
-      }
-    })
-
+    
     return orgs
 
   } catch (err : any) {

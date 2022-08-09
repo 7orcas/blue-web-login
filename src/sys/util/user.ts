@@ -34,11 +34,11 @@ class User {
     } catch (err) {}
   }
 
-  isValid = () => {
+  isValid = (showOrg : boolean, showLang : boolean) => {
     if (this.userid === null || this.userid.length === 0) return false
     if (this.pw === null || this.pw.length === 0) return false
-    if (this.lang === null || this.lang.length === 0) return false
-    if (this.org === null) return false
+    if (showLang && (this.lang === null || this.lang.length === 0)) return false
+    if (showOrg && this.org === null) return false
     return true
   }
 }
