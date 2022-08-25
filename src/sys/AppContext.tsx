@@ -54,10 +54,19 @@ export const AppContextProvider: FC<Props> = ({ children }) => {
     setShowOrg(params.showOrg)
     setIsAuto(params.auto)
     setIsTest(params.test)
-        
+
     //Load langauges 
     const loadLangsX = async () => {
       let langs = await loadLangs(login, params, setErr) || []
+
+      if (login.lang.length == 0) {
+        for (var i=0;i<langs.length;i++) {
+          if (langs[i].dvalue === true) {
+            login.lang = langs[i].code
+          }
+        }
+      }
+      
       setLangs (langs)
       setShowLang(langs.length > 1)
       setUser(login)

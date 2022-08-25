@@ -30,6 +30,7 @@ const Lang : FC<Props> = ({ language }) => {
         let x = new User(user)
         x.lang = langs[i].code
         setUser(x)
+console.log('selected lang=' + x.lang)        
         return
       }
     }

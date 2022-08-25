@@ -19,17 +19,17 @@ class UrlSearchParams {
   }
 
   getParamString (p : string | null) : string {
-    if (p !== null) return p
+    if (p !== null && typeof p !== 'undefined') return p
     return ''
   }
 
   getParamBoolean (p : string | null) : boolean {
-    if (p !== null) return p.toLowerCase().startsWith('t')
+    if (p !== null && typeof p !== 'undefined') return p.toLowerCase().startsWith('t')
     return false
   }
 
   getParamInteger (p : string | null) : number {
-    if (p !== null) return parseInt(p)
+    if (p !== null && typeof p !== 'undefined') return parseInt(p)
     return -1
   }
 }

@@ -20,7 +20,7 @@ const loadLabels = async (user : User, setLabels : any, setErr : any) => {
 
     let labels : Array<LabelI> = []
     for (const l of rtn.data) {
-      labels.push ({key : l.c, label : l.l})
+      labels.push ({key : l.code, label : l.label})
     }
 
     setLabels(labels)

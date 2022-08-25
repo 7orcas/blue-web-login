@@ -6,9 +6,16 @@ interface Props {
 }
 
 const Error: FC<Props> = ({ message }) => {
+
+  const isValidMessage = () => {
+    return message !== null 
+      && typeof message !== 'undefined'
+      && message.length > 0
+  }
+
   return (
     <>
-      { message.length > 0 ? useLabel(message) : ''}
+      { isValidMessage() ? useLabel(message) : ''}
     </>
   )
 }

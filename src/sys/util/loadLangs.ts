@@ -16,7 +16,7 @@ const loadLangs = async (user : User, params : UrlSearchParams, setErr : any) =>
 
     let langs : Array<LangI> = []
     for (const l of rtn.data) {
-      langs.push ({code : l.c, descr : l.d, dvalue : l.x})
+      langs.push ({code : l.code, descr : l.descr, dvalue : l.dvalue})
     }
 
     //First set default

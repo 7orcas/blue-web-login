@@ -3,7 +3,7 @@ class User {
   userid : string | null = ''
   pw : string | null = ''
   org : number | null = null
-  lang : string | null = ''
+  lang : string = 'en'
 
   constructor(u : User | null) {
     if (u !== null) {
@@ -35,11 +35,17 @@ class User {
   }
 
   isValid = (showOrg : boolean, showLang : boolean) => {
-    if (this.userid === null || this.userid.length === 0) return false
-    if (this.pw === null || this.pw.length === 0) return false
-    if (showLang && (this.lang === null || this.lang.length === 0)) return false
+    if (!this.isValidTest(this.userid)) return false
+    if (!this.isValidTest(this.pw)) return false
+    if (showLang && (!this.isValidTest(this.lang))) return false
     if (showOrg && this.org === null) return false
     return true
+  }
+
+  isValidTest (field : string | null) {
+    return field !== null 
+      && typeof field !== 'undefined'
+      && field.length > 0
   }
 }
 
