@@ -13,6 +13,7 @@ const login = async (attempt : any, setErr : any) => {
     let data = response.data.data
     window.location.href = data.m + 
       '?base=' + data.b + 
+      '&upload=' + data.u + 
       '&init=' + data.i + 
       '&sid=' + data.s
 
