@@ -10,7 +10,7 @@ const loadOrgs = async (user : User, params : UrlSearchParams) => {
     
     let orgs : Array<OrgI> = []
     for (const l of response.data) {
-        orgs.push ({label : l.c, value : l.o, dvalue : l.x})
+        orgs.push ({label : l.code, value : l.org, dvalue : l.x})
     }
 
     //Only select default if orgs are shown

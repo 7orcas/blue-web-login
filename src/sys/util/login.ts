@@ -11,11 +11,11 @@ const login = async (attempt : any, setErr : any) => {
     }
 
     let data = response.data.data
-    window.location.href = data.m + 
-      '?base=' + data.b + 
-      '&upload=' + data.u + 
-      '&init=' + data.i + 
-      '&sid=' + data.s
+    window.location.href = data.locationHref + 
+      '?base=' + data.baseUrl + 
+      '&upload=' + data.uploadUrl + 
+      '&init=' + data.initialisationUrl + 
+      '&sid=' + data.sessionId
 
   } catch (err : any) {
     setErr(err)
