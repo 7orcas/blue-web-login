@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/blue-web-login/static/css/main.73a18667.css",
-    "main.js": "/blue-web-login/static/js/main.836ca020.js",
+    "main.css": "/blue-web-login/static/css/main.5ef768ed.css",
+    "main.js": "/blue-web-login/static/js/main.e7356bfc.js",
     "static/media/blue-water.jpg": "/blue-web-login/static/media/blue-water.1daaeaa0e11d519e71a0.jpg",
     "index.html": "/blue-web-login/index.html",
-    "main.73a18667.css.map": "/blue-web-login/static/css/main.73a18667.css.map",
-    "main.836ca020.js.map": "/blue-web-login/static/js/main.836ca020.js.map"
+    "main.5ef768ed.css.map": "/blue-web-login/static/css/main.5ef768ed.css.map",
+    "main.e7356bfc.js.map": "/blue-web-login/static/js/main.e7356bfc.js.map"
   },
   "entrypoints": [
-    "static/css/main.73a18667.css",
-    "static/js/main.836ca020.js"
+    "static/css/main.5ef768ed.css",
+    "static/js/main.e7356bfc.js"
   ]
 }

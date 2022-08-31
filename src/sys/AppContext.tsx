@@ -17,6 +17,7 @@ interface Props {
 }
   
 export interface AppContextI {
+  version: number
   user: any
   setUser: any
   err: any
@@ -34,6 +35,7 @@ const AppContext = createContext<AppContextI | null>(null)
 
 export const AppContextProvider: FC<Props> = ({ children }) => {
 
+  const [version, setVersion] = useState (0.2)
   const [user, setUser] = useState (new User(null))
   const [showLang, setShowLang] = useState (false)
   const [langs, setLangs] = useState <LangI[]>([])
@@ -92,6 +94,7 @@ export const AppContextProvider: FC<Props> = ({ children }) => {
   }, [user.lang])
 
   const appValue: AppContextI = {
+    version: version,
     user: user,
     setUser: setUser,
     err: err,

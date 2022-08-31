@@ -13,7 +13,7 @@ import Button from 'react-bootstrap/Button';
 
 const Layout = () => {
 
-  const { user, setUser, err, setErr, showOrg, showLang, isAuto, isTest } = useContext(AppContext) as AppContextI
+  const { version, user, setUser, err, setErr, showOrg, showLang, isAuto, isTest } = useContext(AppContext) as AppContextI
   
   const loginX = () => {
     if (!user.isValid()){
@@ -40,6 +40,7 @@ const Layout = () => {
   return (
     <>
       <section className='title'>
+        <div className='version'>Version {version}</div>
         {useLabel('loginT')}
         {showLang? <Languages /> : ''}
       </section>

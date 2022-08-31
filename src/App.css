@@ -21,6 +21,16 @@ body {
   font-family: "Sarabun", sans-serif;
 }
 
+.version {
+  background-color: #505050;
+  font-size: small;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  margin: 10px 0px 0px 20px;
+}
+
+
 .languages {
   position: absolute;
   top: 0px;
