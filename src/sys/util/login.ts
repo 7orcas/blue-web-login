@@ -4,13 +4,7 @@ const login = async (attempt : any, setErr : any) => {
 
   try {
     const response = await api.post('/login/web', attempt)
-    
-    // {
-    //   headers: {
-    //     'Access-Control-Allow-Origin': '*'
-    //   },
-    // },
-
+   
     if (response.data.message) {
       setErr(response.data.message)
       return
