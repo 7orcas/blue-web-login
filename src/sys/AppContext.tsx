@@ -35,7 +35,7 @@ const AppContext = createContext<AppContextI | null>(null)
 
 export const AppContextProvider: FC<Props> = ({ children }) => {
 
-  const [version, setVersion] = useState (0.2)
+  const [version, setVersion] = useState (0.3)
   const [user, setUser] = useState (new User(null))
   const [showLang, setShowLang] = useState (false)
   const [langs, setLangs] = useState <LangI[]>([])
@@ -50,6 +50,10 @@ export const AppContextProvider: FC<Props> = ({ children }) => {
   useEffect(() => {
 
     const params = new UrlSearchParams()
+
+    //TESTING
+    // params.showOrg = true
+    
     let login = new User(user)
     login.userid = params.userid
     login.pw = params.pw

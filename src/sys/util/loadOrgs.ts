@@ -9,7 +9,7 @@ const loadOrgs = async (user : User, params : UrlSearchParams) => {
     const response = await api.get(`/org/org-list`, {withCredentials: true})
     
     let orgs : Array<OrgI> = []
-    for (const l of response.data) {
+    for (const l of response.data.data) {
         orgs.push ({label : l.code, value : l.org, dvalue : l.x})
     }
 
