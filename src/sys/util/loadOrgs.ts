@@ -6,7 +6,7 @@ import UrlSearchParams from './urlSearchParams'
 const loadOrgs = async (user : User, params : UrlSearchParams) => {
 
   try {
-    const response = await api.get(`/org/org-list`, {withCredentials: true})
+    const response = await api.get(`/org/list`, {withCredentials: true})
     
     let orgs : Array<OrgI> = []
     for (const l of response.data.data) {
