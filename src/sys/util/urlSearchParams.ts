@@ -2,7 +2,7 @@ class UrlSearchParams {
   userid : string = ''
   pw : string = ''
   lang : string = ''
-  org : number = 0
+  orgNr : number = 0
   showOrg : boolean = false
   auto : boolean = false
   test : boolean = false
@@ -12,7 +12,7 @@ class UrlSearchParams {
     this.userid = this.getParamString(url.searchParams.get("u"))
     this.pw = this.getParamString(url.searchParams.get("p"))
     this.lang = this.getParamString(url.searchParams.get("l"))
-    this.org = this.getParamInteger(url.searchParams.get("o"))
+    this.orgNr = this.getParamInteger(url.searchParams.get("o"))
     this.showOrg = this.getParamBoolean(url.searchParams.get("org"))
     this.auto = this.getParamBoolean(url.searchParams.get("auto"))
     this.test = this.getParamBoolean(url.searchParams.get("test"))

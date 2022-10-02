@@ -2,7 +2,7 @@
 class User {
   userid : string | null = ''
   pw : string | null = ''
-  org : number | null = null
+  orgNr : number | null = null
   lang : string = 'en'
 
   constructor(u : User | null) {
@@ -14,7 +14,7 @@ class User {
   update = (u : User) => {
     this.userid = u.userid
     this.pw = u.pw
-    this.org = u.org
+    this.orgNr = u.orgNr
     this.lang = u.lang
   }
 
@@ -22,7 +22,7 @@ class User {
     try{
       if (o === null)
         return
-      this.org = o
+      this.orgNr = o
     } catch (err) {}
   }
 
@@ -30,7 +30,7 @@ class User {
     try{
       if (o === null)
         return
-      this.org = parseInt(o)
+      this.orgNr = parseInt(o)
     } catch (err) {}
   }
 
@@ -38,7 +38,7 @@ class User {
     if (!this.isValidTest(this.userid)) return false
     if (!this.isValidTest(this.pw)) return false
     if (showLang && (!this.isValidTest(this.lang))) return false
-    if (showOrg && this.org === null) return false
+    if (showOrg && this.orgNr === null) return false
     return true
   }
 

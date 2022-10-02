@@ -10,7 +10,7 @@ const loadOrgs = async (user : User, params : UrlSearchParams) => {
     
     let orgs : Array<OrgI> = []
     for (const l of response.data.data) {
-        orgs.push ({label : l.code, value : l.org, dvalue : l.x})
+        orgs.push ({label : l.code, value : l.orgNr, dvalue : l.x})
     }
 
     //Only select default if orgs are shown
@@ -26,7 +26,7 @@ const loadOrgs = async (user : User, params : UrlSearchParams) => {
 
     //Test if passed in org is valid
     orgs.forEach((o) => {
-      if (o.value === params.org){
+      if (o.value === params.orgNr){
         user.setOrgNumber(o.value)
       }
     })

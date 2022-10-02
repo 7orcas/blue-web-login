@@ -19,7 +19,7 @@ const Org = () => {
   //Refer https://stackoverflow.com/questions/43250854/react-select-does-not-show-the-selected-value-in-the-field
   const getValue = () => {
     for (var i=0;i<orgs.length;i++){
-      if (orgs[i].value === user.org){
+      if (orgs[i].value === user.orgNr){
         return {label: orgs[i].label}
       }
     }

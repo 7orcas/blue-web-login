@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/blue-web-login/static/css/main.5ef768ed.css",
-    "main.js": "/blue-web-login/static/js/main.69c04765.js",
+    "main.js": "/blue-web-login/static/js/main.53b58a51.js",
     "static/media/blue-water.jpg": "/blue-web-login/static/media/blue-water.1daaeaa0e11d519e71a0.jpg",
     "index.html": "/blue-web-login/index.html",
     "main.5ef768ed.css.map": "/blue-web-login/static/css/main.5ef768ed.css.map",
-    "main.69c04765.js.map": "/blue-web-login/static/js/main.69c04765.js.map"
+    "main.53b58a51.js.map": "/blue-web-login/static/js/main.53b58a51.js.map"
   },
   "entrypoints": [
     "static/css/main.5ef768ed.css",
-    "static/js/main.69c04765.js"
+    "static/js/main.53b58a51.js"
   ]
 }

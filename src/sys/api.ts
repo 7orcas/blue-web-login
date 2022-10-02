@@ -10,5 +10,5 @@ const params = new UrlSearchParams()
 
 export default axios.create({
     baseURL: params.getUrl() + '/blue/blue-login',
-    // baseURL: 'http://localhost:8080/blue/rest-api-x', //DEVELOPMENT
+    //baseURL: 'http://localhost:8080/blue/rest-api-x', //DEVELOPMENT ONLY, WON'T CONNECT TO blue-web
 });

@@ -1,6 +1,7 @@
 import { LabelI } from '../Interfaces'
 import api from '../api'
 import User from './user'
+import { JsonResponseI } from './jsonResponseI'
 
 const loadLabels = async (user : User, setLabels : any, setErr : any) => {
 
@@ -12,7 +13,7 @@ const loadLabels = async (user : User, setLabels : any, setErr : any) => {
     const response = await api.get(`/lang/login-pack?${params}`, {withCredentials: true})
     const rtn = response.data
 
-    if (!rtn.valid){
+    if (rtn.returnCode !== JsonResponseI.ok){
       setErr(rtn.message)
       return
     }
