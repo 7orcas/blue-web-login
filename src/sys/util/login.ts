@@ -1,12 +1,20 @@
 import api from '../api'
 
+/*
+  Log into the server
+  Returned url or error
+
+  [Licence]
+  Created May '22
+  @author John Stewart
+ */
 const login = async (attempt : any, setErr : any) => {
 
   try {
     const response = await api.post('/login/web', attempt)
    
-    if (response.data.message) {
-      setErr(response.data.message)
+    if (response.data.error) {
+      setErr(response.data.error)
       return
     }
 
@@ -19,7 +27,7 @@ const login = async (attempt : any, setErr : any) => {
 
   } catch (err : any) {
     setErr(err)
-    console.log(`Error: ${err.message}`)
+    console.log(`Error: ${err.error}`)
   }
 }
 

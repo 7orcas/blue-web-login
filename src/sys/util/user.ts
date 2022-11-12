@@ -1,7 +1,14 @@
+/*
+  User object to return to server
 
+  [Licence]
+  Created May '22
+  @author John Stewart
+ */
 class User {
   userid : string | null = ''
   pw : string | null = ''
+  adminPw : string | null = ''
   orgNr : number | null = null
   lang : string = 'en'
 
@@ -14,6 +21,7 @@ class User {
   update = (u : User) => {
     this.userid = u.userid
     this.pw = u.pw
+    this.adminPw = u.adminPw
     this.orgNr = u.orgNr
     this.lang = u.lang
   }
@@ -34,9 +42,10 @@ class User {
     } catch (err) {}
   }
 
-  isValid = (showOrg : boolean, showLang : boolean) => {
+  isValid = (showOrg : boolean, showLang : boolean, showAdminPw : boolean) => {
     if (!this.isValidTest(this.userid)) return false
-    if (!this.isValidTest(this.pw)) return false
+    if (!showAdminPw && !this.isValidTest(this.pw)) return false
+    if (showAdminPw && !this.isValidTest(this.adminPw)) return false
     if (showLang && (!this.isValidTest(this.lang))) return false
     if (showOrg && this.orgNr === null) return false
     return true

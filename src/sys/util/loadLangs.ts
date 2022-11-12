@@ -3,14 +3,22 @@ import api from '../api'
 import User from './user'
 import UrlSearchParams from './urlSearchParams'
 
+/*
+  Load language options
+
+  [Licence]
+  Created May '22
+  @author John Stewart
+ */
 const loadLangs = async (user : User, params : UrlSearchParams, setErr : any) => {
 
   try {
     const response = await api.get(`/lang/languages`, {withCredentials: true})
     const rtn = response.data
 
-    if (!rtn.valid){
-      setErr(rtn.message)
+    //Problem on the server
+    if (rtn.returnCode != 0){
+      setErr(rtn.error)
       return
     }
 

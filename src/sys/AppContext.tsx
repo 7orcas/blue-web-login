@@ -6,26 +6,28 @@ import loadOrgs from './util/loadOrgs'
 import User from './util/user'
 import UrlSearchParams from './util/urlSearchParams'
 
-/**
- * TODO Module comment
- * [Licence]
- * @author John Stewart
- */
+/*
+  Main context
 
+  [Licence]
+  Created May '22
+  @author John Stewart
+ */
 interface Props {
   children: any
 }
   
 export interface AppContextI {
-  version: number
+  version: string
   user: any
   setUser: any
   err: any
   setErr: any
-  showLang: any
+  showLang: boolean
   langs : LangI[]
   labels : LabelI[]
-  showOrg : any
+  showOrg : boolean
+  showAdminPW : boolean
   orgs : OrgI[]
   isAuto : any
   isTest : any
@@ -35,12 +37,13 @@ const AppContext = createContext<AppContextI | null>(null)
 
 export const AppContextProvider: FC<Props> = ({ children }) => {
 
-  const [version, setVersion] = useState (0.3)
+  const [version, setVersion] = useState ('0.4.1')
   const [user, setUser] = useState (new User(null))
   const [showLang, setShowLang] = useState (false)
   const [langs, setLangs] = useState <LangI[]>([])
   const [labels, setLabels] = useState <LabelI[]>([])
   const [showOrg, setShowOrg] = useState (false)
+  const [showAdminPW, setShowAdminPW] = useState (false)
   const [orgs, setOrgs] = useState <OrgI[]>([])
   const [err, setErr] = useState ('')
   const [isAuto, setIsAuto] = useState (false)
@@ -53,11 +56,13 @@ export const AppContextProvider: FC<Props> = ({ children }) => {
 
     //TESTING
     // params.showOrg = true
+    // params.showAdminPW = true
     
     let login = new User(user)
     login.userid = params.userid
     login.pw = params.pw
     setShowOrg(params.showOrg)
+    setShowAdminPW(params.showAdminPW)
     setIsAuto(params.auto)
     setIsTest(params.test)
 
@@ -72,8 +77,9 @@ export const AppContextProvider: FC<Props> = ({ children }) => {
           }
         }
       }
-      
+
       setLangs (langs)
+      //No need to show options for only 1 language
       setShowLang(langs.length > 1)
       setUser(login)
     }
@@ -107,6 +113,7 @@ export const AppContextProvider: FC<Props> = ({ children }) => {
     langs: langs,
     labels: labels,
     showOrg: showOrg,
+    showAdminPW: showAdminPW,
     orgs: orgs,
     isAuto: isAuto,
     isTest: isTest

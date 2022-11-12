@@ -8,7 +8,7 @@ function App() {
   return (
     <div 
       className="App" 
-      style={{backgroundImage: 'url(' + require('./app/img/blue-water.jpg') + ')',
+      style={{backgroundImage: 'url(' + require('./app/img/bluesky.jpg') + ')',
               backgroundPosition: 'center',
               backgroundSize: 'cover',
               backgroundRepeat: 'no-repeat',

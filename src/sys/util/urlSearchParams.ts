@@ -1,9 +1,18 @@
+/*
+  Initial url can contain flags to alter processing
+
+  [Licence]
+  Created May '22
+  @author John Stewart
+ */
+
 class UrlSearchParams {
   userid : string = ''
   pw : string = ''
   lang : string = ''
   orgNr : number = 0
   showOrg : boolean = false
+  showAdminPW : boolean = false
   auto : boolean = false
   test : boolean = false
   
@@ -14,6 +23,7 @@ class UrlSearchParams {
     this.lang = this.getParamString(url.searchParams.get("l"))
     this.orgNr = this.getParamInteger(url.searchParams.get("o"))
     this.showOrg = this.getParamBoolean(url.searchParams.get("org"))
+    this.showAdminPW = this.getParamBoolean(url.searchParams.get("admin"))
     this.auto = this.getParamBoolean(url.searchParams.get("auto"))
     this.test = this.getParamBoolean(url.searchParams.get("test"))
   }
