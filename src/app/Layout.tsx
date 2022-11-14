@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import AppContext, { AppContextI } from '../sys/AppContext'
 import Label from './Label'
 import Pw from './Pw'
@@ -11,6 +11,7 @@ import useLabel from '../sys/util/useLabel'
 import login from '../sys/util/login'
 import Button from 'react-bootstrap/Button';
 import PwAdmin from './PwAdmin'
+import ForgotPwDialog from './ForgotPwDialog'
 
 /*
   Main layout
@@ -23,6 +24,8 @@ const Layout = () => {
 
   const { version, user, setUser, err, setErr, showOrg, showLang, showAdminPW, isAuto, isTest } = useContext(AppContext) as AppContextI
   
+  const [openForgotPw, setOpenForgotPw] = useState(false);
+
   const loginX = () => {
     if (!user.isValid()){
       return;
@@ -47,6 +50,14 @@ const Layout = () => {
 
   const isError = () => {
     return err.length > 0
+  }
+
+  const forgotPw = () => {
+    setOpenForgotPw(!openForgotPw)
+  }
+
+  const closeForgotPw = () => {
+    setOpenForgotPw(false)
   }
 
   return (
@@ -85,6 +96,14 @@ const Layout = () => {
           type="submit" 
           onClick={() => loginX()}>{useLabel('login')}
         </Button>
+        <div className='forgot-password' onClick={forgotPw}>
+          {useLabel('passforg')}
+          <ForgotPwDialog 
+            setErr={setErr}
+            open={openForgotPw}
+            close={closeForgotPw}
+            />
+        </div>
       </section>
       
       {isError() && <section className='login-error'>
