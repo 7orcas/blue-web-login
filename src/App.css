@@ -124,3 +124,32 @@ body {
   font-size: 30px !important;
   font-weight: bold !important;
 }
+
+#forgot-password {
+  margin-top: 10px;
+}
+
+#forgot-password:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.forgot-password-title {
+  text-align: center;
+  color: #0d6efd;
+  text-decoration: underline;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.forgot-password-button {
+  margin-top: 20px;
+  min-height: 20px;
+  min-width: 250px;
+  padding: 5px 20px 5px 20px;
+  font-size: 18px !important;
+  font-weight: bold !important;
+  color: white;
+  background-color: #0d6efd;
+  border-radius: 5px;
+}

@@ -24,8 +24,6 @@ const Layout = () => {
 
   const { version, user, setUser, err, setErr, showOrg, showLang, showAdminPW, isAuto, isTest } = useContext(AppContext) as AppContextI
   
-  const [openForgotPw, setOpenForgotPw] = useState(false);
-
   const loginX = () => {
     if (!user.isValid()){
       return;
@@ -50,14 +48,6 @@ const Layout = () => {
 
   const isError = () => {
     return err.length > 0
-  }
-
-  const forgotPw = () => {
-    setOpenForgotPw(!openForgotPw)
-  }
-
-  const closeForgotPw = () => {
-    setOpenForgotPw(false)
   }
 
   return (
@@ -96,14 +86,7 @@ const Layout = () => {
           type="submit" 
           onClick={() => loginX()}>{useLabel('login')}
         </Button>
-        <div className='forgot-password' onClick={forgotPw}>
-          {useLabel('passforg')}
-          <ForgotPwDialog 
-            setErr={setErr}
-            open={openForgotPw}
-            close={closeForgotPw}
-            />
-        </div>
+        <ForgotPwDialog />
       </section>
       
       {isError() && <section className='login-error'>
