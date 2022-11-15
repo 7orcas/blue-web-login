@@ -19,6 +19,7 @@ const UserId = () => {
         onSubmit={(e) => e.preventDefault()}
         type='text'
         value={user.userid}
+        maxLength={100}
         onChange={(e) => setUserX(e.target.value)}
       />
     </>

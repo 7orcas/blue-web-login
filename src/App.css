@@ -72,6 +72,7 @@ body {
   margin-bottom: 15px;
 }
 
+
 .label {
   color: #505050;
   padding-right: 3px;
@@ -127,6 +128,7 @@ body {
 
 #forgot-password {
   margin-top: 10px;
+  max-width: 700px !important;
 }
 
 #forgot-password:hover {
@@ -142,14 +144,29 @@ body {
   font-weight: bold;
 }
 
+.forgot-password-subtitle {
+  text-align: center;
+  color: #505050;
+  font-size: 16px;
+}
+
+.email-label-field {
+  margin-bottom: 10px;
+}
+
 .forgot-password-button {
-  margin-top: 20px;
-  min-height: 20px;
-  min-width: 250px;
+  margin: 10px 10px 10px 30px;
+  min-height: 50px;
+  height: 50px;
+  min-width: 200px;
   padding: 5px 20px 5px 20px;
   font-size: 18px !important;
   font-weight: bold !important;
   color: white;
   background-color: #0d6efd;
   border-radius: 5px;
+}
+
+.forgot-password-button-left {
+  margin-right: 30px;
 }

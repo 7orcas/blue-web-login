@@ -26,6 +26,7 @@ const Pw = () => {
         onSubmit={(e) => e.preventDefault()}
         type={showPw? 'text' : 'password'}
         value={user.pw}
+        maxLength={100}
         onChange={(e) => setPwX(e.target.value)}
       />
       <div className='show-password' onClick={togglePassword}><FontAwesomeIcon icon={showPw? faEyeSlash : faEye } /></div>

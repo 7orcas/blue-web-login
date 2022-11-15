@@ -18,6 +18,7 @@ const Email: FC<Props>  = ({ email, setEmail }) => {
         onSubmit={(e) => e.preventDefault()}
         type='text'
         value={email}
+        maxLength={100}
         onChange={(e) => setEmailX(e.target.value)}
       />
     </>

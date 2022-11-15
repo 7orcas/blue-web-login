@@ -25,6 +25,14 @@ const login = async (attempt : any, setErr : any) => {
       '&init=' + data.initialisationUrl + 
       '&sid=' + data.sessionId
 
+    //Testing
+    console.log(data.locationHref + 
+      '?base=' + data.baseUrl + 
+      '&upload=' + data.uploadUrl + 
+      '&init=' + data.initialisationUrl + 
+      '&sid=' + data.sessionId)
+
+
   } catch (err : any) {
     setErr(err)
     console.log(`Error: ${err.error}`)

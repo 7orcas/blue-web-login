@@ -5,7 +5,7 @@ import forgotPw from '../sys/util/forgotPw'
 import Email from './Email'
 import Label from './Label'
 import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
-import { Button } from '@mui/material';
+import Button from 'react-bootstrap/Button';
 
 
 const ForgotPwDialog = () => {
@@ -67,9 +67,12 @@ const ForgotPwDialogX : FC<ForgotPwDialogXProps> = ({ open, handleCommit, handle
           <div className='forgot-password-title'>
             {useLabel('passreset')}
           </div>
+          <div className='forgot-password-subtitle'>
+            {useLabel('passreset1')}
+          </div>
         </DialogTitle>
         <DialogContent>
-          <div className='label-field'>
+          <div className='email-label-field'>
             <Label langkey='email' />
             <Email 
               email={email}
@@ -78,7 +81,7 @@ const ForgotPwDialogX : FC<ForgotPwDialogXProps> = ({ open, handleCommit, handle
           </div>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleCommit} className='forgot-password-button'>{useLabel('commit')}</Button>
+          <Button onClick={handleCommit} className='forgot-password-button forgot-password-button-left'>{useLabel('email')}</Button>
           <Button onClick={handleClose} className='forgot-password-button'>{useLabel('cancel')}</Button>
         </DialogActions>
       </div>
