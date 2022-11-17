@@ -8,7 +8,7 @@ const UserId = () => {
 
   const setUserX = (u : string) => {
     let x = new User(user)
-    x.userid = u
+    x.username = u
     setUser(x)
   }
 
@@ -18,7 +18,7 @@ const UserId = () => {
         className='field'
         onSubmit={(e) => e.preventDefault()}
         type='text'
-        value={user.userid}
+        value={user.username}
         maxLength={100}
         onChange={(e) => setUserX(e.target.value)}
       />

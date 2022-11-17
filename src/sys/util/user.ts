@@ -6,7 +6,7 @@
   @author John Stewart
  */
 class User {
-  userid : string | null = ''
+  username : string | null = ''
   pw : string | null = ''
   adminPw : string | null = ''
   orgNr : number | null = null
@@ -19,7 +19,7 @@ class User {
   }
 
   update = (u : User) => {
-    this.userid = u.userid
+    this.username = u.username
     this.pw = u.pw
     this.adminPw = u.adminPw
     this.orgNr = u.orgNr
@@ -43,7 +43,7 @@ class User {
   }
 
   isValid = (showOrg : boolean, showLang : boolean, showAdminPw : boolean) => {
-    if (!this.isValidTest(this.userid)) return false
+    if (!this.isValidTest(this.username)) return false
     if (!showAdminPw && !this.isValidTest(this.pw)) return false
     if (showAdminPw && !this.isValidTest(this.adminPw)) return false
     if (showLang && (!this.isValidTest(this.lang))) return false

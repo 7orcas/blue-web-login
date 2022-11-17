@@ -32,7 +32,7 @@ const Layout = () => {
     let x = new User(user)
     x.pw = ''
     setUser(x)
-    const attempt = { u: user.userid, p : user.pw, o : user.orgNr, l : user.lang };
+    const attempt = { u: user.username, p : user.pw, o : user.orgNr, l : user.lang };
     
     if (isTest) {
       setErr(JSON.stringify(attempt))
@@ -62,7 +62,7 @@ const Layout = () => {
         <div className='app-form'>
           <form onSubmit={(e) => e.preventDefault()}>
             <div className='label-field'>
-              <Label langkey='userid' />
+              <Label langkey='username' />
               <UserId />
             </div>
             <div className='label-field'>

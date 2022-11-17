@@ -15,8 +15,8 @@ const ForgotPwDialog = () => {
   const [email, setEmail] = useState('')
   
   useEffect(() => {
-    setEmail(user.userid)
-  },[user.userid])
+    setEmail(user.username)
+  },[user.username])
 
   const handleClickOpen = () => {
     setOpen(true)

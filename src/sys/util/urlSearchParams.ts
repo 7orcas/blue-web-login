@@ -7,7 +7,7 @@
  */
 
 class UrlSearchParams {
-  userid : string = ''
+  username : string = ''
   pw : string = ''
   lang : string = ''
   orgNr : number = 0
@@ -18,7 +18,7 @@ class UrlSearchParams {
   
   constructor() {
     const url = new URL (window.location.href)
-    this.userid = this.getParamString(url.searchParams.get("u"))
+    this.username = this.getParamString(url.searchParams.get("u"))
     this.pw = this.getParamString(url.searchParams.get("p"))
     this.lang = this.getParamString(url.searchParams.get("l"))
     this.orgNr = this.getParamInteger(url.searchParams.get("o"))
