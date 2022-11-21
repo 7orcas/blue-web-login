@@ -32,7 +32,7 @@ const Layout = () => {
     let x = new User(user)
     x.pw = ''
     setUser(x)
-    const attempt = { u: user.username, p : user.pw, o : user.orgNr, l : user.lang };
+    const attempt = { u: user.username, p : user.pw, a : user.adminPw, o : user.orgNr, l : user.lang };
     
     if (isTest) {
       setErr(JSON.stringify(attempt))
