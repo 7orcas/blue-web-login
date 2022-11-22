@@ -45,7 +45,7 @@ class User {
   isValid = (showOrg : boolean, showLang : boolean, showAdminPw : boolean) => {
     if (!this.isValidTest(this.username)) return false
     if (!showAdminPw && !this.isValidTest(this.pw)) return false
-    if (showAdminPw && !this.isValidTest(this.adminPw)) return false
+    // if (showAdminPw && !this.isValidTest(this.adminPw)) return false
     if (showLang && (!this.isValidTest(this.lang))) return false
     if (showOrg && this.orgNr === null) return false
     return true
