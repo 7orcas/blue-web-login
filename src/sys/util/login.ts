@@ -23,15 +23,17 @@ const login = async (attempt : any, setErr : any) => {
       '?base=' + data.baseUrl + 
       '&upload=' + data.uploadUrl + 
       '&init=' + data.initialisationUrl + 
-      '&sid=' + data.sessionId
+      '&sid=' + data.sessionId +
+      '&cn=' + data.clientNr
 
     //Testing
     console.log(data.locationHref + 
       '?base=' + data.baseUrl + 
       '&upload=' + data.uploadUrl + 
       '&init=' + data.initialisationUrl + 
-      '&sid=' + data.sessionId)
-
+      '&sid=' + data.sessionId + 
+      '&cn=' + data.clientNr
+      )
 
   } catch (err : any) {
     setErr(err)
