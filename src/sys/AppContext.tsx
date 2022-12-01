@@ -61,6 +61,7 @@ export const AppContextProvider: FC<Props> = ({ children }) => {
     let login = new User(user)
     login.username = params.username
     login.pw = params.pw
+    login.adminPw = params.adminPw
     setShowOrg(params.showOrg)
     setShowAdminPW(params.showAdminPW)
     setIsAuto(params.auto)

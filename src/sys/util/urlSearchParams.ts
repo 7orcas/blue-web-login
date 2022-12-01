@@ -9,6 +9,7 @@
 class UrlSearchParams {
   username : string = ''
   pw : string = ''
+  adminPw : string = ''
   lang : string = ''
   orgNr : number = 0
   showOrg : boolean = false
@@ -20,6 +21,7 @@ class UrlSearchParams {
     const url = new URL (window.location.href)
     this.username = this.getParamString(url.searchParams.get("u"))
     this.pw = this.getParamString(url.searchParams.get("p"))
+    this.adminPw = this.getParamString(url.searchParams.get("ap"))
     this.lang = this.getParamString(url.searchParams.get("l"))
     this.orgNr = this.getParamInteger(url.searchParams.get("o"))
     this.showOrg = this.getParamBoolean(url.searchParams.get("org"))
