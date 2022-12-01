@@ -24,7 +24,8 @@ const login = async (attempt : any, setErr : any) => {
       '&upload=' + data.uploadUrl + 
       '&init=' + data.initialisationUrl + 
       '&sid=' + data.sessionId +
-      '&cn=' + data.clientNr
+      '&cn=' + data.clientNr + 
+      '&ali=' + data.adminLoggedIn
 
     //Testing
     console.log(data.locationHref + 
@@ -32,7 +33,8 @@ const login = async (attempt : any, setErr : any) => {
       '&upload=' + data.uploadUrl + 
       '&init=' + data.initialisationUrl + 
       '&sid=' + data.sessionId + 
-      '&cn=' + data.clientNr
+      '&cn=' + data.clientNr + 
+      '&ali=' + data.adminLoggedIn
       )
 
   } catch (err : any) {
